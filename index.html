@@ -23,8 +23,10 @@
       font-family: "Times New Roman", Times, serif;
       font-weight: normal;
       text-transform: lowercase;
-      text-align: justify;
-      font-size: clamp(2rem, 2.5vw, 2.5rem);
+      position: relative;
+      left: -3rem;
+      text-align: left;
+      font-size: clamp(1.5rem, 2vw, 2rem);
       letter-spacing: -0.04em;
       text-shadow: 0 0 2px rgba(255,255,255,.4), 0 2px 8px rgba(255,255,255,.2);
       padding: 1.5rem 1rem 0.5rem;
@@ -46,6 +48,7 @@
 
     @media (max-width: 768px) {
       body { padding: 0 1rem 3rem; }
+      .title { left: 0; 
     }
   </style>
 </head>
