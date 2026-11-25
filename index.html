@@ -16,7 +16,7 @@
       font-weight: bold;
       color: #FFFFFF;
       background: #000000;
-      line-height: 1;
+      line-height: 0.1;
     }
 
     .title {
@@ -43,12 +43,17 @@
 
     .texte p {
       margin: 0 0 1.4rem;
-      font-size: 1.05rem;
+      font-size: 1.5rem;
+      line-height: 1.9;
     }
 
     @media (max-width: 768px) {
       body { padding: 0 1rem 3rem; }
-      .title { left: -2rem; }
+      .title { left: -1.5rem; }
+      .texte p {
+       font-size: 1.05rem;
+       line-height: 1.8;
+      }
     }
   </style>
 </head>
