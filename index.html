@@ -22,14 +22,19 @@
     .title {
       font-family: "Times New Roman", Times, serif;
       font-weight: normal;
-      color: #FF2C2C;
+      color: #b30500;
+      text-shadow:
+        0 0 6px rgba(225, 6, 0, .7),
+        0 0 18px rgba(225, 6, 0, .45),
+        0 0 40px rgba(225, 6, 0, .25);
+      -webkit-text-stroke: 0.5px #ff6b5e;
+      paint-order: stroke fill;
       text-transform: lowercase;
-      position: relative;
+      position: relative; z-index: 1;
       left: -4rem;
       text-align: left;
       font-size: clamp(1.5rem, 2vw, 2rem);
       letter-spacing: -0.04em;
-      text-shadow: 0 0 2px rgba(255,255,255,.4), 0 2px 8px rgba(255,255,255,.2);
       padding: 1.5rem 0 0;
       margin: 0 auto 0;
       max-width: 42rem;
@@ -38,6 +43,7 @@
     .texte {
       max-width: 42rem;
       margin: -0.3rem auto 0;
+      position: relative; z-index: 2;
       text-align: justify;  
       hyphens: none;
       -webkit-hyphens: none;
@@ -47,6 +53,10 @@
       margin: 0 0 1.4rem;
       font-size: 1.3rem;
       line-height: 1.6;
+    }
+
+    .nb { 
+      white-space: nowrap;
     }
 
     @media (max-width: 768px) and (orientation: portrait) {
@@ -73,7 +83,7 @@
 
   <main class="texte">
 
-    <p>Dans Aftenlandet (1977) - film hybride pris en tenailles entre le montage documentaire et la fictionnalisation de notre&nbsp;monde - Watkins nous donne à voir un Danemark traversé par une crise profonde : le pays est secoué par une grève générale, alors même qu’un sommet de l’OTAN se tient à Copenhague, dans un contexte de guerre froide sous fond de conflits nucléaires. Parallèlement, un ministre est enlevé par des extrémistes, et les autorités répriment violemment les militants de gauche, au dehors comme au dedans, dans la rue comme dans les locaux de ceux qui œuvrent à la mise en forme de vérités.</p>
+    <p>Dans Aftenlandet (1977) - film hybride pris en tenailles entre le montage documentaire et la fictionnalisation de notre monde <span class="nb">- Watkins</span> nous donne à voir un Danemark traversé par une crise profonde : le pays est secoué par une grève générale, alors même qu’un sommet de l’OTAN se tient à Copenhague, dans un contexte de guerre froide sous fond de conflits nucléaires. Parallèlement, un ministre est enlevé par des extrémistes, et les autorités répriment violemment les militants de gauche, au dehors comme au dedans, dans la rue comme dans les locaux de ceux qui œuvrent à la mise en forme de vérités.</p>
 
     <p>Le tableau général étant posé, Watkins oscille sans cesse entre l’histoire par le haut – celle des grands hommes, des ministres dans leurs beaux costumes, qui parent leurs politiques belliqueuses et va-t-en-guerre dans des discours aseptisés et sobres, portant le nom d’une rationalité défensive et sécuritaire – et l’histoire par le bas – celle des masses prises, dans le flux de l’histoire, dans toute la violence de sa processualité. Par l’alternance successive entre conférences de presse et mobilisation générale des ouvriers de Copenhague, Watkins rend visible une autre histoire de la guerre froide. Si la doxa historiographique du conflit donne à entendre un récit surplombant - donc loin de la quotidienneté en tant que la guerre froide se serait faite à coup de menaces nucléaires, de coup de téléphones et de congrès internationaux - Watkins renverse ce narratif d’une histoire-bataille en plaçant sa caméra au ras du sol. Le pendant dialectique de la grande histoire (faussement) politique et diplomatique c’est la matérialité de la petite histoire, celle qui se fait au coin de la rue, dans les heurts et la violence.<br>
     C’est donc dans cette tension mutuelle que le geste filmique de Watkins prend corps, d’abord dans le récit quotidien et fragmenté d’une lutte syndicale contre la menace nucléaire puis pour la vérité historique.</p>
