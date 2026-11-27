@@ -75,7 +75,7 @@
       .texte p {
        font-size: 1rem;
        line-height: 1.8;
-       margin-top: -1rem;
+       margin-top: -2rem;
       }
     }
 
@@ -119,15 +119,26 @@
   </main>
 <script>
 <script>
-if (window.matchMedia('(max-width: 768px)').matches) {
-  document.querySelectorAll('.texte p').forEach(p => {
-    p.innerHTML = p.innerHTML
-      .replace(/\s+([,.;:!?»])/g, '\u202F$1')      
-      .replace(/«\s+/g, '«\u202F')                 
-      .replace(/ [–-] /g, ' –\u00A0')             
-      .replace(/(\p{L})-(\p{L})/gu, '$1\u2011$2'); 
-  });
-}
+(function () {
+  const mq = window.matchMedia('(max-width: 768px)');
+  const paras = document.querySelectorAll('.texte p');
+  const originaux = Array.from(paras, p => p.innerHTML);
+
+  function appliquer() {
+    paras.forEach((p, i) => {
+      if (!mq.matches) { p.innerHTML = originaux[i]; return; } 
+      p.innerHTML = originaux[i]
+        .replace(/\s+[–-]\s+/g, '\u00A0–\u00A0')   
+        .replace(/,\s+/g, ',\u00A0')              
+        .replace(/;\s+/g, ';\u00A0')               
+        .replace(/\s+([:!?»])/g, '\u202F$1')       
+        .replace(/«\s+/g, '«\u202F');              
+    });
+  }
+
+  appliquer();
+  mq.addEventListener('change', appliquer);
+})();
 </script>
 </body>
 </html>
