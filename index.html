@@ -75,8 +75,8 @@
       .texte p {
        font-size: 1rem;
        line-height: 1.8;
-       margin-top: -3rem;
-      .glue { white-space: nowrap; }
+       margin-top: -2.5rem;
+      .m { white-space: nowrap; }
       }
     }
 
@@ -120,22 +120,5 @@
   </main>
 
 <script>
-document.querySelectorAll('.texte p').forEach(p => {
-  const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
-  const noeuds = [];
-  while (walker.nextNode()) noeuds.push(walker.currentNode);
-
-  noeuds.forEach(n => {
-    const re = /(\S+\s[–-]\s\S+|\S+[,;]\s+\S+)/g;
-    if (!re.test(n.nodeValue)) return;
-    const html = n.nodeValue
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-      .replace(re, '<span class="glue">$1</span>');
-    const tmp = document.createElement('span');
-    tmp.innerHTML = html;
-    n.replaceWith(...tmp.childNodes);
-  });
-});
-</script>
 </body>
 </html>
