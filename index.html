@@ -75,7 +75,8 @@
       .texte p {
        font-size: 1rem;
        line-height: 1.8;
-       margin-top: -2rem;
+       margin-top: -3rem;
+      .glue { white-space: nowrap; }
       }
     }
 
@@ -117,28 +118,24 @@
     <p>Car ce à quoi Watkins invite c’est la critique des idéologies, des visions du monde, des métaphysiques et récits de notre présent, et cela en les ré-inscrivant dans les support qui sont les leurs et que nous nommons images. Ces dernières sont devenues des matrices idéologiques, contribuant ainsi à (re)produire l’état du monde. Ainsi, s’ouvre un travail, nécessairement collectif : celui d’écrire vers la critique, dans le présent des images, par les agencements et dispositifs qui sont les nôtres.</p>
 
   </main>
-<script>
-<script>
-(function () {
-  const mq = window.matchMedia('(max-width: 768px)');
-  const paras = document.querySelectorAll('.texte p');
-  const originaux = Array.from(paras, p => p.innerHTML);
 
-  function appliquer() {
-    paras.forEach((p, i) => {
-      if (!mq.matches) { p.innerHTML = originaux[i]; return; } 
-      p.innerHTML = originaux[i]
-        .replace(/\s+[–-]\s+/g, '\u00A0–\u00A0')   
-        .replace(/,\s+/g, ',\u00A0')              
-        .replace(/;\s+/g, ';\u00A0')               
-        .replace(/\s+([:!?»])/g, '\u202F$1')       
-        .replace(/«\s+/g, '«\u202F');              
-    });
-  }
+<script>
+document.querySelectorAll('.texte p').forEach(p => {
+  const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+  const noeuds = [];
+  while (walker.nextNode()) noeuds.push(walker.currentNode);
 
-  appliquer();
-  mq.addEventListener('change', appliquer);
-})();
+  noeuds.forEach(n => {
+    const re = /(\S+\s[–-]\s\S+|\S+[,;]\s+\S+)/g;
+    if (!re.test(n.nodeValue)) return;
+    const html = n.nodeValue
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(re, '<span class="glue">$1</span>');
+    const tmp = document.createElement('span');
+    tmp.innerHTML = html;
+    n.replaceWith(...tmp.childNodes);
+  });
+});
 </script>
 </body>
 </html>
